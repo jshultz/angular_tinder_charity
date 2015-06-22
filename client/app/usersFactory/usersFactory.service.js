@@ -89,7 +89,21 @@ angular.module('charityApp')
         }
       });
       return deferred.promise;
-    }
+    } // createAccount
+
+    usersFactory.loginAccount = function(data) {
+      var deferred = $q.defer();
+      ref.authWithPassword(data, function(error, authData) {
+        if (error) {
+          deferred.resolve(error)
+          console.log("Login Failed!", error);
+        } else {
+          deferred.resolve('success')
+          console.log("Authenticated successfully with payload:", authData);
+        }
+      });
+      return deferred.promise;
+    } // loginAccount
 
 
 
