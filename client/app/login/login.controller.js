@@ -54,23 +54,23 @@ angular.module('charityApp')
       }); // checkIfUserExists
     }
 
-    ref.onAuth(authDataCallback);
+    // ref.onAuth(authDataCallback);
 
     $scope.submit = function(formModel){
 
-    	usersFactory.loginAccount(formModel).then(function(result) {
-    		if (result == 'created') {
-				$timeout(function(){
+        ref.authWithPassword(formModel, function(error, authData) {
+            if (error) {
+                console.log('Error: ', error)
+            } else {
+                $timeout(function(){
                     userExistsCheck(authData);
                     $rootScope.loggedIn = true;
                     $rootScope.displayName = usersFactory.getName(authData);
                     $scope.$apply()
-					$location.path('/login');
-				},1); // timeout
-    		} else {
-    			console.log('result', result);
-    		} // if result
-    	})
+                    $location.path('/login');
+                },1); // timeout
+            }
+        })
     } // submit
 
 

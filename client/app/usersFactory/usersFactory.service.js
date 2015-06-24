@@ -7,31 +7,6 @@ angular.module('charityApp')
 
     var ref = new Firebase("https://tinder-charity.firebaseio.com/");
 
-    usersFactory.addUserToGroup = function(user, group_id) {
-        var deferred = $q.defer();
-        var groupName = factory.getGroupName(group_id)
-        ref.child('users').orderByChild('email').equalTo(user.email).on('child_added', function(snapshot) {
-          theuser = snapshot.key()
-          ref.child('users').child(theuser).child('group').child(group_id).set({
-              id: group_id,
-              name: groupName
-            }, function(error) {
-              if (error) {
-                console.log("Synchronization failed " + error);
-              } else {
-                console.log("Synchronization succeeded");
-                ref.child('groups').orderByChild('name').equalTo(groupName).on('child_added', function(snapshot) {
-                  deferred.resolve(snapshot.val());
-                })
-              }
-            })
-          }
-        )
-
-        return deferred.promise;
-
-    }, // addUserToGroup
-
     // Tests to see if /users/<userId> has any data.
     usersFactory.checkIfUserExists = function(authData) {
       var deferred = $q.defer();
@@ -42,44 +17,12 @@ angular.module('charityApp')
           usersFactory.userCreateCallback(authData);
           deferred.resolve('created')
         } else {
-                    console.log('existed')
+          console.log('existed')
           deferred.resolve('existed')
         }
       });
       return deferred.promise;
     } // checkIfUserExists
-
-    usersFactory.createGroup = function(group) {
-        if (group == 'first') {
-          var guid = factory.createGUID();
-          ref.child('groups').child(guid).set({
-            id: guid,
-            name: 'admin'
-          })
-          var anotherguid = factory.createGUID();
-          ref.child('groups').child(anotherguid).set({
-            id: anotherguid,
-            name: 'users'
-          })
-
-          return guid;
-
-        } else {
-          if (group.id) {
-            ref.child('groups').child(group.id).set({
-              id: group.id,
-              name: group.name
-            })
-          } else {
-            var guid = factory.createGUID();
-            ref.child('groups').child(guid).set({
-              id: guid,
-              name: group
-            })
-          }
-          return factory.getGroupList();
-        }
-    }, // createGroup
 
     usersFactory.createGUID = function() {
         function s4() {
@@ -151,7 +94,6 @@ angular.module('charityApp')
                   ref.child('users').once('value', function(snapshot) {
                       var child = snapshot.hasChildren()
                       if (child == false) {
-                          var group_id = usersFactory.createGroup('first')
                           var user_level = 1
                           console.log('no users')
                       } else {
@@ -171,33 +113,12 @@ angular.module('charityApp')
                         var profile_photo = authData.twitter.cachedUserProfile.profile_image_url_https;
                       } // get Twitter profile photo
 
-                      ref.child("users").child(authData.uid).set({
+                      ref.child('users').child(authData.uid).set({
                           provider: authData.provider,
                           full_name: usersFactory.getName(authData),
                           user_level: user_level,
                           photo: profile_photo
                       });
-
-                      if (child == usersFactory) {
-                        groupName = usersFactory.getGroupName(group_id)
-                        ref.child('users').child(authData.uid).child('group').child(group_id).set({
-                            id: group_id,
-                            name: groupName
-                          })
-                      }
-
-                      if (child != false) {
-                        usersFactory.getGroupByName('users').then(function(response) {
-                          console.log('response', response);
-                          ref.child('users').child(authData.uid).child('group').child(response.id).set({
-                            id: response.id,
-                            name: 'users'
-                          })
-                        });
-
-                      }
-
-
                   });
           // save the user's profile into Firebase so we can list users,
           // use them in Security and Firebase Rules, and show profiles
