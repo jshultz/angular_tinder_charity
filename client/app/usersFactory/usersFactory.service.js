@@ -62,6 +62,17 @@ angular.module('charityApp')
         return deferred.promise;
       }, // getAccessLevel
 
+    usersFactory.getLoggedInStatus = function() {
+      var user = ref.getAuth();
+
+      if (user) {
+        return true;
+      } else {
+        return false;
+      }
+
+    }
+
     usersFactory.getName = function(authData) {
         if (authData) {
           switch(authData.provider) {
