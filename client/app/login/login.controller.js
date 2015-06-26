@@ -11,13 +11,6 @@ angular.module('charityApp')
             $rootScope.loggedIn = true;
             $scope.loggedIn = true;
             $rootScope.displayName = usersFactory.getName(authData);
-            // usersFactory.getProfilePhoto(authData).then(function(response){
-            //   if (response != null) {
-            //     $rootScope.profilePhoto = response.photo;
-            //   } else {
-            //     $scope.phone = '';
-            //   }
-            // }); // getPhone
             usersFactory.getAccessLevel(authData).then(function(response) {
               if ( response == 1) {
                 $rootScope.admin = true;
@@ -57,17 +50,20 @@ angular.module('charityApp')
     // ref.onAuth(authDataCallback);
 
     $scope.submit = function(formModel){
+        $scope.authData = null;
+        $scope.error = null;
 
         ref.authWithPassword(formModel, function(error, authData) {
             if (error) {
                 console.log('Error: ', error)
             } else {
+                $scope.authData = authData;
+                userExistsCheck(authData);
+                $rootScope.loggedIn = true;
+                $rootScope.displayName = usersFactory.getName(authData);
+                $location.path('/profile');
                 $timeout(function(){
-                    userExistsCheck(authData);
-                    $rootScope.loggedIn = true;
-                    $rootScope.displayName = usersFactory.getName(authData);
                     $scope.$apply()
-                    $location.path('/login');
                 },1); // timeout
             }
         })

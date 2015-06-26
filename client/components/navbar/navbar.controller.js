@@ -5,6 +5,9 @@ angular.module('charityApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
+    },{
+      'title': 'About',
+      'link': '/about'
     }];
 
     $scope.isCollapsed = true;
@@ -16,9 +19,7 @@ angular.module('charityApp')
         'title': 'Logout',
         'link': '/logout'
       };
-
       $scope.menu.push(loginmenu)
-      
     } else {
       var loginmenu = {
         'title': 'Login',
