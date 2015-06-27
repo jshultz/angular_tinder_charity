@@ -1,7 +1,17 @@
 'use strict';
 
 angular.module('charityApp')
-  .controller('NavbarCtrl', function ($scope, $location, usersFactory) {
+  .controller('NavbarCtrl', function ($scope, $location, usersFactory, $firebaseObject, $firebaseAuth) {
+
+    var ref = new Firebase("https://tinder-charity.firebaseio.com/");
+
+    var syncObject = $firebaseObject(ref);
+    syncObject.$bindTo($scope, "data");
+
+    var auth = $firebaseAuth(ref);
+
+    $scope.auth = $firebaseAuth(ref);
+
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
@@ -12,22 +22,12 @@ angular.module('charityApp')
 
     $scope.isCollapsed = true;
 
-    var loggedIn = usersFactory.getLoggedInStatus()
+    $scope.logout = function() {
+      ref.unauth();
+      $scope.loggedIn = false;
+    } // logout
 
-    if (loggedIn) {
-      var loginmenu = {
-        'title': 'Logout',
-        'link': '/logout'
-      };
-      $scope.menu.push(loginmenu)
-    } else {
-      var loginmenu = {
-        'title': 'Login',
-        'link': '/login'
-      };
-
-      $scope.menu.push(loginmenu)
-    }
+    $scope.loggedIn = usersFactory.getLoggedInStatus()
 
     $scope.isActive = function(route) {
       return route === $location.path();
