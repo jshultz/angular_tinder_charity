@@ -17,11 +17,11 @@ angular.module('charityApp', [
  // for ui-router -- MAY NEED TO DELETE THIS
 angular.module('charityApp').run(["$rootScope", "$state", function($rootScope, $state) {
 	console.log('$rootScope', $rootScope)
-$rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
+  $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
   // We can catch the error thrown when the $requireAuth promise is rejected
   // and redirect the user back to the home page
   if (error === "AUTH_REQUIRED") {
-    $state.go("home");
+    $state.go("main");
   }
 });
 }]);

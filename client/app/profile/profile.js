@@ -6,6 +6,12 @@ angular.module('charityApp')
       .state('profile', {
         url: '/account/profile',
         templateUrl: 'app/profile/profile.html',
-        controller: 'ProfileCtrl'
-      });
+        controller: 'ProfileCtrl',
+      resolve: {
+        user: function($stateParams, usersFactory, $firebaseObject, $firebaseAuth) {
+        	console.log('in here')
+        	var ref = new Firebase("https://tinder-charity.firebaseio.com/");
+        	return ref;
+        }
+      }});
   });
