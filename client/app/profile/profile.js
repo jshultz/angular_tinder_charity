@@ -4,7 +4,7 @@ angular.module('charityApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('profile', {
-        url: '/profile',
+        url: '/account/profile',
         templateUrl: 'app/profile/profile.html',
         controller: 'ProfileCtrl'
       });

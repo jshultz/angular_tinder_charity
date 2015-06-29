@@ -61,7 +61,7 @@ angular.module('charityApp')
                 userExistsCheck(authData);
                 $rootScope.loggedIn = true;
                 $rootScope.displayName = usersFactory.getName(authData);
-                $location.path('/profile');
+                $location.path('/account/profile');
                 $timeout(function(){
                     $scope.$apply()
                 },1); // timeout
