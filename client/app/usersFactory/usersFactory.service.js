@@ -64,7 +64,7 @@ angular.module('charityApp')
 
     usersFactory.getLoggedInStatus = function() {
       var user = ref.getAuth();
-
+      console.log('user', user);
       if (user) {
         return true;
       } else {

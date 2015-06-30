@@ -9,9 +9,12 @@ angular.module('charityApp')
         controller: 'ProfileCtrl',
       resolve: {
         user: function($stateParams, usersFactory, $firebaseObject, $firebaseAuth) {
-        	console.log('in here')
-        	var ref = new Firebase("https://tinder-charity.firebaseio.com/");
-        	return ref;
+          var userLoggedIn = usersFactory.getLoggedInStatus();
+          if (userLoggedIn) {
+            console.log('yep, logged In')
+          } else {
+            console.log('nope, not logged in')
+          }
         }
       }});
   });
