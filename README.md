@@ -7,4 +7,4 @@ Full Stack Angular project including Node, Grunt, Bower and Yeoman using Stormpa
 TODO:
  * Implement angular-swing
  * Way to add charities to app.
- 
+ * finish up angular ui route authentication
