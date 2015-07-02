@@ -43,6 +43,7 @@ angular.module('charityApp')
           console.log("Error creating user:", error);
         } else {
           deferred.resolve('created')
+          console.log('userData', userData)
           console.log("Successfully created user account with uid:", userData.uid);
         }
       });
