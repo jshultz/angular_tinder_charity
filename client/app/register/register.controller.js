@@ -7,7 +7,9 @@ angular.module('charityApp')
     $scope.submit = function(formModel){
 
     	usersFactory.createAccount(formModel).then(function(result) {
-    		if (result == 'created') {
+    		if (result != 'error') {
+                formModel['uid'] = result
+                usersFactory.userCreateCallback(formModel)
 				$timeout(function(){
 					$location.path('/login');
 				},1); // timeout

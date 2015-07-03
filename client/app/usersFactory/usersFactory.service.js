@@ -42,8 +42,7 @@ angular.module('charityApp')
           deferred.resolve(error)
           console.log("Error creating user:", error);
         } else {
-          deferred.resolve('created')
-          console.log('userData', userData)
+          deferred.resolve(userData.uid)
           console.log("Successfully created user account with uid:", userData.uid);
         }
       });
@@ -125,12 +124,7 @@ angular.module('charityApp')
                         var profile_photo = authData.twitter.cachedUserProfile.profile_image_url_https;
                       } // get Twitter profile photo
 
-                      ref.child('users').child(authData.uid).set({
-                          provider: authData.provider,
-                          full_name: usersFactory.getName(authData),
-                          user_level: user_level,
-                          photo: profile_photo
-                      });
+                      ref.child('users').child(authData.uid).set(authData);
                   });
           // save the user's profile into Firebase so we can list users,
           // use them in Security and Firebase Rules, and show profiles
