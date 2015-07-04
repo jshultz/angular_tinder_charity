@@ -50,23 +50,22 @@ angular.module('charityApp')
     }, // createAccount
 
     usersFactory.getAccessLevel = function(authData) {
-        var deferred = $q.defer();
-        // Attach an asynchronous callback to read the data at our posts reference
-        ref.child('users').child(authData.uid).on("value", function(snapshot) {
-            if (snapshot) {
-                deferred.resolve(snapshot.val().user_level);
-            } else {
-                deferred.resolve(null)
-            }
-        });
-        return deferred.promise;
-      }, // getAccessLevel
+      var deferred = $q.defer();
+      // Attach an asynchronous callback to read the data at our posts reference
+      ref.child('users').child(authData.uid).on("value", function(snapshot) {
+          if (snapshot) {
+              deferred.resolve(snapshot.val().user_level);
+          } else {
+              deferred.resolve(null)
+          }
+      });
+      return deferred.promise;
+    }, // getAccessLevel
 
     usersFactory.getLoggedInStatus = function() {
       var user = ref.getAuth();
-      console.log('user', user);
       if (user) {
-        return true;
+        return user;
       } else {
         return false;
       }
@@ -74,17 +73,29 @@ angular.module('charityApp')
     }
 
     usersFactory.getName = function(authData) {
-        if (authData) {
-          switch(authData.provider) {
-          case 'password':
-            return authData.password.email.replace(/@.*/, '');
-          case 'twitter':
-            return authData.twitter.displayName;
-          case 'facebook':
-            return authData.facebook.displayName;
-          }
+      if (authData) {
+        switch(authData.provider) {
+        case 'password':
+          return authData.password.email.replace(/@.*/, '');
+        case 'twitter':
+          return authData.twitter.displayName;
+        case 'facebook':
+          return authData.facebook.displayName;
         }
-      }, // getName
+      }
+    }, // getName
+
+    usersFactory.getProfile = function(authData) {
+      var deferred = $q.defer();
+        ref.child('users').child(authData.uid).on("value", function(snapshot) {
+            if (snapshot) {
+                deferred.resolve(snapshot.val());
+            } else {
+                deferred.resolve(null)
+            }
+        });
+        return deferred.promise;
+    }, // getProfile
 
     usersFactory.loginAccount = function(data) {
       var deferred = $q.defer();

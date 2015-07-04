@@ -9,12 +9,7 @@ angular.module('charityApp')
         controller: 'ProfileCtrl',
       resolve: {
         user: function($stateParams, usersFactory, $firebaseObject, $firebaseAuth) {
-          var userLoggedIn = usersFactory.getLoggedInStatus();
-          if (userLoggedIn) {
-            console.log('yep, logged In')
-          } else {
-            console.log('nope, not logged in')
-          }
+          return usersFactory.getLoggedInStatus();
         }
       }});
   });
