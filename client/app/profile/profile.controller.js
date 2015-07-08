@@ -5,8 +5,8 @@ angular.module('charityApp')
     $scope.message = 'Hello';
 
     $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
+      'title': 'Edit your Profile',
+      'link': '/account/profile'
     }, {
       'title': 'About',
       'link': '/about'
