@@ -11,5 +11,14 @@ angular.module('charityApp')
         user: function($stateParams, usersFactory, $firebaseObject, $firebaseAuth) {
           return usersFactory.getLoggedInStatus();
         }
+      }})
+      .state('account', {
+        url: '/account',
+        templateUrl: 'app/profile/account.html',
+        controller: 'ProfileCtrl',
+        resolve: {
+          user: function($stateParams, usersFactory, $firebaseObject, $firebaseAuth) {
+          return usersFactory.getLoggedInStatus();
+        }
       }});
   });

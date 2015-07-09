@@ -26,15 +26,9 @@ angular.module('charityApp')
       var loginmenu = [{
         'title': 'Account',
         'link': '/account'
-      }, {
-        'title': 'Logout',
-        'link': '/logout'
       }];
     } else {
-      var loginmenu = [{
-        'title': 'Login',
-        'link': '/login'
-      }];
+
     }
 
     angular.forEach(loginmenu, function(value, key) {
@@ -44,6 +38,7 @@ angular.module('charityApp')
     $scope.isCollapsed = true;
 
     $scope.logout = function() {
+      console.log('here bitches')
         ref.unauth();
         $scope.loggedIn = false;
       } // logout

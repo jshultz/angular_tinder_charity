@@ -13,11 +13,9 @@ angular.module('charityApp')
       ref.child('users').child(authData.uid).once('value', function(snapshot) {
         var exists = (snapshot.val() !== null);
         if (!exists) {
-          console.log('created')
           usersFactory.userCreateCallback(authData);
           deferred.resolve('created')
         } else {
-          console.log('existed')
           deferred.resolve('existed')
         }
       });
