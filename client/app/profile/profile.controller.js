@@ -19,7 +19,7 @@ angular.module('charityApp')
 
       $scope.menu = [{
         'title': 'Edit Charity Profile',
-        'link': '/account/profile'
+        'link': '/account/charity'
       }, {
         'title': 'About',
         'link': '/about'
