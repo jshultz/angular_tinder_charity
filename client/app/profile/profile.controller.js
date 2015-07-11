@@ -1,8 +1,18 @@
 'use strict';
 
 angular.module('charityApp')
-  .controller('ProfileCtrl', function ($scope, usersFactory, user) {
+  .controller('ProfileCtrl', function ($scope, usersFactory, user, API) {
     $scope.message = 'Hello';
+
+    $scope.uploadLogo = function(logoFile) {
+      API.uploadLogo(logoFile).success(function (uploadResponse) {
+          // Handle response from server
+        console.log(uploadResponse);
+      }).error(function (error) {
+        // Handle error from server
+        console.log(error);
+      });
+    };
 
   usersFactory.getProfile(user).then(function(response){
     if (response != null) {

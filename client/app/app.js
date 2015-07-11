@@ -2,14 +2,26 @@
 
 angular.module('charityApp', [
 	'firebase',
+  'flow',
 	'ngCookies',
 	'ngResource',
 	'ngSanitize',
 	'ui.router'
 ])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, flowFactoryProvider) {
     $urlRouterProvider
       .otherwise('/');
+
+    flowFactoryProvider.defaults = {
+      permanentErrors: [404, 500, 501],
+      maxChunkRetries: 1,
+      chunkRetryInterval: 5000,
+      simultaneousUploads: 4,
+      singleFile: true
+    };
+    flowFactoryProvider.on('catchAll', function (event) {
+      console.log('catchAll', arguments);
+    });
 
     $locationProvider.html5Mode(true);
   });
