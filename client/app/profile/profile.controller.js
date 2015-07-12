@@ -1,13 +1,14 @@
 'use strict';
 
 angular.module('charityApp')
-  .controller('ProfileCtrl', function ($scope, usersFactory, user, API) {
+  .controller('ProfileCtrl', function ($scope, usersFactory, user, API, imagesFactory) {
     $scope.message = 'Hello';
 
     $scope.uploadLogo = function(logoFile) {
       API.uploadLogo(logoFile).success(function (uploadResponse) {
           // Handle response from server
-        console.log(uploadResponse);
+        $scope.charityPhoto = uploadResponse.filename;
+        imagesFactory.clientAddCharityImage(user,uploadResponse.filename)
       }).error(function (error) {
         // Handle error from server
         console.log(error);

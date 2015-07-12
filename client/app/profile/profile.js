@@ -21,6 +21,15 @@ angular.module('charityApp')
           return usersFactory.getLoggedInStatus();
         }
       }})
+      .state('flow', {
+        url: '/account/flow',
+        templateUrl: 'app/profile/flow.html',
+        controller: 'ProfileCtrl',
+        resolve: {
+          user: function($stateParams, usersFactory, $firebaseObject, $firebaseAuth) {
+          return usersFactory.getLoggedInStatus();
+        }
+      }})
       .state('profile', {
         url: '/account/profile',
         templateUrl: 'app/profile/profile.html',

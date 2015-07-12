@@ -10,6 +10,12 @@ angular.module('charityApp')
                 headers: {'Content-Type': undefined},
                 transformRequest: angular.identity
             });
+        },
+        getImage: function(file) {
+            return $http.get('/api/images/' + file.filename, {
+                headers: {'Content-Type': undefined},
+                transformRequest: angular.identity
+            })
         }
     };
 }]);

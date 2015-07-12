@@ -13,12 +13,7 @@ var router = module.exports = express.Router();
 router.use(multer({
     dest: './public/uploads',
     changeDest: function(dest, req, res){
-        dest += '/haha/';
-        try{
-		    stat = fs.statSync(dest);
-		}catch(err){
-		    fs.mkdirSync(dest);
-		}
+        dest += '/images/';
         return dest;
     },
     onFileUploadStart: function(file){
@@ -28,9 +23,11 @@ router.use(multer({
 
 router.post('/', sendResponse);
 function sendResponse(req, res){
-    res.send('ok');
+    var result = {};
+    result.filename = req.files.file.name;
+    result.status = 'ok';
+    res.send(result);
 };
-
 
 // router.post('/', controller.index);
 
