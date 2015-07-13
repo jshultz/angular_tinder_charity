@@ -8,7 +8,7 @@ angular.module('charityApp')
       API.uploadLogo(logoFile).success(function (uploadResponse) {
           // Handle response from server
         $scope.charityPhoto = uploadResponse.filename;
-        imagesFactory.clientAddCharityImage(user,uploadResponse.filename)
+        usersFactory.addPhotoForUser(user, uploadResponse.filename);
       }).error(function (error) {
         // Handle error from server
         console.log(error);

@@ -7,6 +7,16 @@ angular.module('charityApp')
 
     var ref = new Firebase("https://tinder-charity.firebaseio.com/");
 
+    // Add Photos for Charity Client
+
+    usersFactory.addPhotoForUser = function(user, filename) {
+
+      ref.child('photos').child(user.uid).set({
+        photo: filename
+      })
+
+    } // addPhotoToClient
+
     // Tests to see if /users/<userId> has any data.
     usersFactory.checkIfUserExists = function(authData) {
       var deferred = $q.defer();
