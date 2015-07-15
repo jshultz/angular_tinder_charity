@@ -5,7 +5,8 @@ angular.module('charityApp', [
 	'ngCookies',
 	'ngResource',
 	'ngSanitize',
-	'ui.router'
+	'ui.router',
+  'gajus.swing'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider

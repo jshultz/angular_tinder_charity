@@ -26,6 +26,10 @@ angular.module('charityApp')
       var loginmenu = [{
         'title': 'Account',
         'link': '/account'
+      },
+      {
+        'title': 'Charities',
+        'link': '/charities'
       }];
     } else {
 

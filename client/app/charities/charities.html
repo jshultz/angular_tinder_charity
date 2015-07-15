@@ -1,0 +1,45 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+<div class="row">
+	<div class="col-md-12">
+		<div class="btn-group" role="group" aria-label="...">
+			<a ng-repeat="item in menu" ng-class="{active: isActive(item.link)}" class="btn btn-default" ng-show="!item.click" ng-href="{{item.link}}">
+				{{item.title}}
+			</a>
+        </div>
+	</div>
+</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h2>This is the Charities view.</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div id="viewport">
+		        <ul class="stack" swing-stack>
+		            <li
+		                swing-card
+		                swing-on-throwout="throwout(eventName, eventObject)"
+		                swing-on-throwoutleft="throwoutleft(eventName, eventObject)"
+		                swing-on-throwoutright="throwoutright(eventName, eventObject)"
+		                swing-on-throwin="throwin(eventName, eventObject)"
+		                swing-on-dragstart="dragstart(eventName, eventObject)"
+		                swing-on-dragmove="dragmove(eventName, eventObject)"
+		                swing-on-dragend="dragend(eventName, eventObject)"
+		                ng-repeat="card in cards" ng-class="card.name">{{card.symbol}}</li>
+		        </ul>
+		    </div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div id="source">
+		        <p>Drag the playing cards out of the stack and let go. Dragging them beyond the desk will throw them out of the stack. If you drag too little and let go, the cards will spring back into place. You can throw cards back into the stack after you have thrown them out.</p>
+		        <p>Open the <a href="https://developer.chrome.com/devtools/docs/console">Console</a> to view the associated events.<p>
+		        <p>Demonstration of <a href="https://github.com/gajus/angular-swing">https://github.com/gajus/angular-swing</a> implementation.</p>
+		    </div>
+		</div>
+	</div>
+</div>
