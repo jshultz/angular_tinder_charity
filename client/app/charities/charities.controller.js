@@ -3,12 +3,24 @@
 angular.module('charityApp')
   .controller('CharitiesCtrl', function ($scope) {
     $scope.message = 'Hello';
+
+    $scope.swingStackConfig = {
+        maxRotation: 1
+      };
+
     $scope.cards = [
             {name: 'clubs', symbol: '♣'},
             {name: 'diamonds', symbol: '♦'},
             {name: 'hearts', symbol: '♥'},
             {name: 'spades', symbol: '♠'}
         ];
+
+        $scope.isThrowOut = function (offset, elementWidth) { 
+            return $scope.throwOutConfidence(offset, elementWidth) == 1; 
+        };
+        $scope.throwOutConfidence = function (offset, elementWidth) { 
+            return Math.min(Math.abs(offset) / 30, 1); 
+        };
 
         $scope.throwout = function (eventName, eventObject) {
             console.log('throwout', eventObject);
