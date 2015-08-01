@@ -18,19 +18,8 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div id="viewport">
-		        <ul class="stack" swing-stack>
-		            <li
-		                swing-card
-		                is-throw-out="isThrowOut(offset, elementWidth)"
-		                throw-out-confidence="throwOutConfidence(offset, elementWidth)"
-		                swing-on-throwout="throwout(eventName, eventObject)"
-		                swing-on-throwoutleft="throwoutleft(eventName, eventObject)"
-		                swing-on-throwoutright="throwoutright(eventName, eventObject)"
-		                swing-on-throwin="throwin(eventName, eventObject)"
-		                swing-on-dragstart="dragstart(eventName, eventObject)"
-		                swing-on-dragmove="dragmove(eventName, eventObject)"
-		                swing-on-dragend="dragend(eventName, eventObject)"
-		                ng-repeat="card in cards" ng-class="card.name">{{card.symbol}}</li>
+		        <ul class="stack">
+		            <li ng-repeat="card in cards" ng-class="card.name">{{card.symbol}}</li>
 		        </ul>
 		    </div>
 		</div>
