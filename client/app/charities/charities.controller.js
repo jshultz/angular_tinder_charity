@@ -4,10 +4,11 @@ angular.module('charityApp')
   .controller('CharitiesCtrl', function ($scope) {
     $scope.message = 'Hello';
 
-    $scope.cards = [
-            {name: 'clubs', symbol: '♣'},
-            {name: 'diamonds', symbol: '♦'},
-            {name: 'hearts', symbol: '♥'},
-            {name: 'spades', symbol: '♠'}
-        ];
+    charitiesFactory.getCharities().then(function(response){
+    if (response != null) {
+      $scope.charities = response;
+    } else {
+      $scope.charities = '';
+    } // if (response != null)
+    
   });

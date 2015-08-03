@@ -151,10 +151,6 @@ angular.module('charityApp')
           }
       } // userCreateCallback
 
-
-
-
-
     // Public API here
     return usersFactory;
   });
