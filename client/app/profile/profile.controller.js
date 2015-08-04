@@ -2,7 +2,6 @@
 
 angular.module('charityApp')
   .controller('ProfileCtrl', function ($scope, usersFactory, user, API, imagesFactory) {
-    $scope.message = 'Hello';
 
     $scope.uploadLogo = function(logoFile) {
       API.uploadLogo(logoFile).success(function (uploadResponse) {
@@ -26,7 +25,6 @@ angular.module('charityApp')
 
     // we've got a sweet response, let's find out if it's a charity or not.
     if (response.charity) {
-      $scope.test = 'TEST TETST ETS'
 
       $scope.menu = [{
         'title': 'Edit Charity Profile',

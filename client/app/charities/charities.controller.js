@@ -5,10 +5,11 @@ angular.module('charityApp')
     $scope.message = 'Hello';
 
     charitiesFactory.getCharities().then(function(response){
-    if (response != null) {
-      $scope.charities = response;
-    } else {
-      $scope.charities = '';
-    } // if (response != null)
-    
+	    if (response != null) {
+	      $scope.charities = response;
+	    } else {
+	      $scope.charities = '';
+	    } // if (response != null)
+	}); // getCharities
+
   });

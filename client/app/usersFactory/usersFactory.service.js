@@ -144,6 +144,13 @@ angular.module('charityApp')
                       } // get Twitter profile photo
 
                       ref.child('users').child(authData.uid).set(authData);
+
+                      if (authData.charity == true) {
+                        ref.child('charities').child(authData.uid).set({
+                          name: authData.charityName
+                        });
+                      }
+
                   });
           // save the user's profile into Firebase so we can list users,
           // use them in Security and Firebase Rules, and show profiles
