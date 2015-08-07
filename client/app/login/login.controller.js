@@ -55,7 +55,11 @@ angular.module('charityApp')
 
         ref.authWithPassword(formModel, function(error, authData) {
             if (error) {
+              $timeout(function() {
                 console.log('Error: ', error)
+                $scope.error = error;
+                $scope.$apply()
+              }, 1); // timeout
             } else {
                 $scope.authData = authData;
                 userExistsCheck(authData);
