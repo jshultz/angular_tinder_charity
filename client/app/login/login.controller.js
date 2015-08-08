@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('charityApp')
-  .controller('LoginCtrl', function ($scope, $timeout, $location, usersFactory, $rootScope) {
+  .controller('LoginCtrl', function ($scope, $timeout, $location, usersFactory, $rootScope, flash) {
     $scope.message = 'Hello';
+    $scope.flash = flash;
 
     var ref = new Firebase("https://tinder-charity.firebaseio.com/");
 
@@ -40,7 +41,6 @@ angular.module('charityApp')
             $rootScope.authData = authData;
           },1); // redirect to step1
         } else { // user already existed
-            console.log('in here');
             $rootScope.authData = authData;
             authDataCallback
         } // if user existed or was created

@@ -5,13 +5,26 @@ angular.module('charityApp', [
 	'ngCookies',
 	'ngResource',
 	'ngSanitize',
-	'ui.router'
+	'ui.router',
+  'angular-flash.service',
+  'angular-flash.flash-alert-directive'
 ])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, flashProvider) {
     $urlRouterProvider
       .otherwise('/');
 
     $locationProvider.html5Mode(true);
+
+    // Support bootstrap 3.0 "alert-danger" class with error flash types
+    flashProvider.errorClassnames.push('alert-danger');
+
+    /**
+     * Also have...
+     *
+     * flashProvider.warnClassnames
+     * flashProvider.infoClassnames
+     * flashProvider.successClassnames
+     */
   });
 
  // for ui-router -- MAY NEED TO DELETE THIS

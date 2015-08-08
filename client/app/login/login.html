@@ -8,9 +8,16 @@
     </div>
   </div>
   <div class="row">
-  <div class="col-sm-offset-4 col-xs-12 col-sm-4">
-    <p class="alert alert-success" ng-show="created && !enabled">Your account has been created.  Please check your email for a verification link.</p>
-    <p class="alert alert-success" ng-show="created && enabled && !authenticating">Your account has been created.  <a ui-sref="login">Login Now</a>.</p>
+    <p>Flash: {{flash}}</p>
+    <div flash-alert="success" active-class="in" class="alert fade">
+        <strong class="alert-heading">Congrats!</strong>
+        <span class="alert-message">{{flash.message}}</span>
+    </div>
+
+    <div flash-alert="error" active-class="in" class="alert fade">
+        <strong class="alert-heading">Boo!</strong>
+        <span class="alert-message">{{flash.message}}</span>
+    </div>
   </div>
 </div>
 <div class="row">
