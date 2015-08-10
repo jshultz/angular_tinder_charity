@@ -8,5 +8,6 @@ UPDATE: Back on the wagon with this project after taking some time to work on ot
 
 TODO:
  * Fix up charities.
+ * Work on Flash Messages
 
  
