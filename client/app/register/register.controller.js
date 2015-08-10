@@ -7,16 +7,18 @@ angular.module('charityApp')
     $scope.submit = function(formModel){
 
     	usersFactory.createAccount(formModel).then(function(result) {
-    		if (result != 'error') {
+    		if (result == 'success') {
                 formModel['uid'] = result
-                usersFactory.userCreateCallback(formModel)
                 flash.success = 'Congratulations, you can log in now!';
 				$timeout(function(){
 					$location.path('/login');
 				},1); // timeout
     		} else {
-                flash.error = "Something went wrong! #{result}";
+                flash.error = "Something went wrong! " + result;
     			console.log('result', result);
+                $timeout(function(){
+                    $location.path('/register');
+                },1); // timeout
     		} // if result
     	})
     }

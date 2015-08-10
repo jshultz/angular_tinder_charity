@@ -42,7 +42,6 @@ angular.module('charityApp')
           s4() + '-' + s4() + s4() + s4();
     }, // createa a pseudo createGUID
 
-     // Simple POST request example (passing data) :
     usersFactory.createAccount = function(data) {
       var deferred = $q.defer();
       ref.createUser(data, function(error, userData) {
@@ -50,7 +49,9 @@ angular.module('charityApp')
           deferred.resolve(error)
           console.log("Error creating user:", error);
         } else {
-          deferred.resolve(userData.uid)
+          data.uid = userData.uid
+          usersFactory.userCreateCallback(data)
+          deferred.resolve('success')
           console.log("Successfully created user account with uid:", userData.uid);
         }
       });
@@ -143,7 +144,12 @@ angular.module('charityApp')
                         var profile_photo = authData.twitter.cachedUserProfile.profile_image_url_https;
                       } // get Twitter profile photo
 
-                      ref.child('users').child(authData.uid).set(authData);
+                      ref.child("users").child(authData.uid).set({
+                          firstName: authData.givenName,
+                          surname: authData.surname,
+                          full_name: authData.givenName + ' ' + authData.surname,
+                          user_level: user_level
+                      });
 
                       if (authData.charity == true) {
                         ref.child('charities').child(authData.uid).set({
