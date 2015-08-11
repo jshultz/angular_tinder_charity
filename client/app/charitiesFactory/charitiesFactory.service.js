@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('charityApp')
-  .factory('charitiesFactory', function () {
+  .factory('charitiesFactory', function ($http, $q) {
+
+    var charitiesFactory = {}
 
     charitiesFactory.getCharities = function() {
       var deferred = $q.defer();

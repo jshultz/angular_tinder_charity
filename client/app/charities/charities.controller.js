@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('charityApp')
-  .controller('CharitiesCtrl', function ($scope) {
+  .controller('CharitiesCtrl', function ($scope, charitiesFactory) {
     $scope.message = 'Hello';
 
     charitiesFactory.getCharities().then(function(response){
