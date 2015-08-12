@@ -1,7 +1,14 @@
 'use strict';
 
 angular.module('charityApp')
-  .controller('ProfileCtrl', function ($scope, usersFactory, user, API, imagesFactory) {
+  .controller('ProfileCtrl', function ($scope, usersFactory, user, API, imagesFactory,$timeout, $location, flash) {
+
+    if (user == false) {
+      $timeout(function(){
+          flash.error = "You must be logged in to view this page. ";
+          $location.path('/login');
+      },1); // timeout
+    }
 
     $scope.uploadLogo = function(logoFile) {
       API.uploadLogo(logoFile).success(function (uploadResponse) {
@@ -14,40 +21,40 @@ angular.module('charityApp')
       });
     };
 
-  usersFactory.getProfile(user).then(function(response){
-    if (response != null) {
-      var profile = response;
-      $scope.profile = response;
-    } else {
-      var profile = false;
-      $scope.profile = '';
-    } // if (response != null)
+    usersFactory.getProfile(user).then(function(response){
+      if (response != null) {
+        var profile = response;
+        $scope.profile = response;
+      } else {
+        var profile = false;
+        $scope.profile = '';
+      } // if (response != null)
 
-    // we've got a sweet response, let's find out if it's a charity or not.
-    if (response.charity) {
+      // we've got a sweet response, let's find out if it's a charity or not.
+      if (response.charity) {
 
-      $scope.menu = [{
-        'title': 'Edit Charity Profile',
-        'link': '/account/charity'
-      }, {
-        'title': 'About',
-        'link': '/about'
-      }];
+        $scope.menu = [{
+          'title': 'Edit Charity Profile',
+          'link': '/account/charity'
+        }, {
+          'title': 'About',
+          'link': '/about'
+        }];
 
-    } else {
+      } else {
 
-      $scope.menu = [{
-      'title': 'Edit your Profile',
-        'link': '/account/profile'
-      }, {
-        'title': 'About',
-        'link': '/about'
-      }];
+        $scope.menu = [{
+        'title': 'Edit your Profile',
+          'link': '/account/profile'
+        }, {
+          'title': 'About',
+          'link': '/about'
+        }];
 
-    } // if (response.charity)
+      } // if (response.charity)
 
 
-  }) // getProfile(user)
+    }) // getProfile(user)
 
 
 });
