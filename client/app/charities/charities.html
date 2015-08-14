@@ -18,7 +18,10 @@
 	<div class="row">
 		<div class="col-md-12">
 			<ul class="stack">
-	            <li ng-repeat="card in cards" ng-class="card.name">{{card.symbol}}</li>
+	            <li ng-repeat="charity in charities" ng-class="charity.name">
+	            	{{charity.name}}
+	            	<img class="img-responsive" ng-src="images/{{charity.photo}}">
+	            </li>
 	        </ul>
 		</div>
 	</div>

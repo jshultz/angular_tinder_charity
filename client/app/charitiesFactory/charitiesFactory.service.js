@@ -23,19 +23,17 @@ angular.module('charityApp')
 
     charitiesFactory.getCharities = function() {
       var deferred = $q.defer();
-        ref.child('charities').on("value", function(charityShot) {
-            debugger
-            var userId = charityShot.val().id; // line 1 (results like 1,2,3,4,5,6)
-            ref.child('photos').child(userId).once("value", function(photoShot) {
-                console.log(id + ":" + mediaSnap.val().name);
-            })
-            // if (snapshot) {
-            //     // deferred.resolve(snapshot.val());
-            //     console.log(snapshot.val());
-            // } else {
-            //     console.log("The read failed: " + errorObject.code);
-            //     deferred.resolve(null)
-            // }
+        var baseRef = new Firebase("https://tinder-charity.firebaseio.com/");
+        var norm = new Firebase.util.NormalizedCollection(
+          baseRef.child('charities'),
+          baseRef.child('photos')
+        );
+        norm = norm.select( 'charities.name', 'photos.photo');
+
+        ref = norm.ref();
+        ref.on('value', function(snap) {
+          deferred.resolve(snap.val());
+          console.log('profile updated!', snap.key(), snap.val());
         });
         return deferred.promise;
     }
