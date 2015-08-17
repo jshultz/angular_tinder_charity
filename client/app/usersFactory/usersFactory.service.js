@@ -10,7 +10,6 @@ angular.module('charityApp')
     // Add Photos for Charity Client
 
     usersFactory.addPhotoForUser = function(user, filename) {
-
       ref.child('photos').child(user.uid).set({
         photo: filename
       })
