@@ -1,3 +1,33 @@
+#charity-frame {
+	overflow: hidden;
+	width: 758px;
+	height: 800px;
+	position: relative;
+}
 ul.stack {
 	list-style-type: none;
+	position: absolute;
+	width: 2000em;
+}
+
+ul.stack li {
+	float: left;
+}
+
+ul.stack li.charity {
+	width: 718px;
+	height: 800px;
+	display: block;
+}
+
+ul.stack li.charity .button {
+	width: 133px;
+}
+
+ul.stack li.charity .button.left {
+	float: left;
+}
+
+ul.stack li.charity .button.right {
+	float: right;
 }

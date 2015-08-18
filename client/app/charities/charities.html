@@ -17,20 +17,22 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<ul class="stack">
-	            <li ng-repeat="charity in charities" ng-class="charity.name" class="charity">
-	            	<div class="row"><div class="col-md-12">{{charity.name}}</div></div>
-	            	<div class="row"><div class="col-md-12"><img class="img-responsive" ng-src="images/{{charity.photo}}"></div></div>
-	            	<div class="row">
-						<div class="col-xs-6 col-md-6">
-							<a class="btn btn-success" href="#" role="button">Support</a>
+			<div id="charity-frame">
+				<ul class="stack">
+		            <li ng-repeat="charity in charities" ng-class="charity.name" class="charity">
+		            	<div class=""><div class="">{{charity.name}}</div></div>
+		            	<div class=""><div class=""><img class="img-responsive" ng-src="images/{{charity.photo}}"></div></div>
+		            	<div class="">
+							<div class="button left">
+								<a class="btn btn-success" href="#" role="button">Support</a>
+							</div>
+							<div class="button right">
+								<a class="btn btn-danger" href="#" role="button">Kick to the Curb.</a>
+							</div>
 						</div>
-						<div class="col-xs-6 col-md-6">
-							<a class="btn btn-danger" href="#" role="button">Kick to the Curb.</a>
-						</div>
-					</div>
-	            </li>
-	        </ul>
+		            </li>
+		        </ul>
+			</div>
 		</div>
 	</div>
 </div>
