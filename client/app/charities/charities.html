@@ -17,9 +17,9 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<div id="charity-frame">
-				<ul class="stack">
-		            <li ng-repeat="charity in charities" ng-class="charity.name" class="charity">
+			<cardflow>
+				<div class="cardflow-card" ng-repeat="charity in charities">
+		            <div ng-class="charity.name" class="charity">
 		            	<div class=""><div class="">{{charity.name}}</div></div>
 		            	<div class=""><div class=""><img class="img-responsive" ng-src="images/{{charity.photo}}"></div></div>
 		            	<div class="">
@@ -30,9 +30,9 @@
 								<a class="btn btn-danger" href="#" role="button">Kick to the Curb.</a>
 							</div>
 						</div>
-		            </li>
-		        </ul>
-			</div>
+		            </div>
+		        </div>
+			</cardflow>
 		</div>
 	</div>
 </div>

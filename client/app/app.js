@@ -7,7 +7,8 @@ angular.module('charityApp', [
 	'ngSanitize',
 	'ui.router',
   'angular-flash.service',
-  'angular-flash.flash-alert-directive'
+  'angular-flash.flash-alert-directive',
+  'angular-cardflow'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, flashProvider) {
     $urlRouterProvider
