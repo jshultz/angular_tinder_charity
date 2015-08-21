@@ -7,6 +7,5 @@ Full Stack Angular project including Node, Grunt, Bower and Yeoman using Stormpa
 UPDATE: Back on the wagon with this project after taking some time to work on other things.
 
 TODO:
- * Pretty up Charity page.
+ * Work on charity pages.
  * Get some cool payment stuff
- 
