@@ -41,8 +41,8 @@ ul.stack li.charity .button.right {
 
 .cardflow-container {
     /* just make it big enough to float the second card next to first, so I can calculate offsets & width */
-    width: 200%; 
-    
+    width: 200%;
+
     /* disable text selection */
     -webkit-touch-callout: none;
     user-select: none;
@@ -71,11 +71,11 @@ ul.stack li.charity .button.right {
     float:left;
     margin-right: 10px;
 
-    width: 200px;
-    height: 200px;
-    
+    width: 400px;
+    height: auto;
+
     text-align: center;
-    line-height:200px;
+    line-height:auto;
 
     background: #000;
     background-size:cover;
@@ -109,68 +109,6 @@ ul.stack li.charity .button.right {
     position: relative;
 }
 
-/* style carousel single-card flows */
-.cardflow-carousel,.cardflow-carousel .cardflow-card,.cardflow-carousel .cardflow-container,.cardflow-carousel .cardflow-wrapper {
-    width: 400px;
-    height: 400px;
-}
-
-.cardflow-carousel .cardflow-card {
-    line-height: 400px;
-    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-    text-align: center;
-}
-
-.carousel .cardflow-card {
-    margin-right: 0;
-}
-
-.cardflow-carousel .indicators {
-    position: absolute;
-    background-color: #000;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 100;
-    bottom: 0;
-    left: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    filter: alpha(opacity=0);
-    opacity: 0;
-    width: 100%;
-    text-align: center;
-    -webkit-transition: opacity 0.5s ease-out;
-    -moz-transition: opacity 0.5s ease-out;
-    -o-transition: opacity 0.5s ease-out;
-    -ms-transition: opacity 0.5s ease-out;
-    transition: opacity 0.5s ease-out;
-}
-
-.cardflow-carousel:hover .indicators {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    filter: alpha(opacity=100);
-    opacity: 1;
-}
-
-.cardflow-carousel .indicator {
-    background-color: #000;
-    background-color: rgba(10, 10, 10, 0.6);
-    cursor: pointer;
-    width: 6px;
-    height: 6px;
-    display: inline-block;
-    border-radius: 50%;
-    margin: 2px;
-    -webkit-transition: color 0.5s ease-out;
-    -moz-transition: color 0.5s ease-out;
-    -o-transition: color 0.5s ease-out;
-    -ms-transition: color 0.5s ease-out;
-    transition: color 0.5s ease-out;
-}
-
-.cardflow-carousel .indicator.active {
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, 0.6);
-}
-
 /*
 You can get much better cross-browser support by doing all your reflections & glows like this:
 http://webdesign.tutsplus.com/tutorials/cross-browser-css-reflections-glows-and-blurs--webdesign-6294
@@ -178,12 +116,12 @@ http://webdesign.tutsplus.com/tutorials/cross-browser-css-reflections-glows-and-
 
 
 cardflow .cardflow-wrapper {
-    height: 300px;
+    height: 500px;
     padding-top: 10px;
-    background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.05, rgb(46,46,46)), color-stop(0.53, rgb(0,0,0)) );
+    /*background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.05, rgb(46,46,46)), color-stop(0.53, rgb(0,0,0)) );*/
 }
 
-cardflow .cardflow-card {
+/*cardflow .cardflow-card {
     -webkit-box-shadow: 0 0 8px 8px rgba(0,0,0,0.5);
     box-shadow: 0 0 8px 8px rgba(0,0,0,0.5);
     -webkit-box-reflect: below 1px -webkit-gradient( linear, left top, left bottom, from(transparent), color-stop(0.6, transparent), to(rgba(255, 255, 255, 0.5)) );
@@ -201,7 +139,7 @@ cardflow .cardflow-card {
     -ms-transition: -ms-transform 0.25s ease-out;
     transition: transform 0.25s ease-out;
     */
-}
+}*/
 
 cardflow .cardflow-card.cardflow-active {
     -webkit-box-shadow: 0 0 4px 4px rgba(127,127,127,0.5);

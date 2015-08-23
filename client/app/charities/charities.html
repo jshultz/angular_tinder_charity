@@ -20,18 +20,16 @@
 			<cardflow>
 				<div class="cardflow-card" ng-repeat="charity in charities">
 		            <div ng-class="charity.name" class="charity">
-		            	<div class=""><div class="">{{charity.name}}</div></div>
-		            	<div class=""><div class=""><img class="img-responsive" ng-src="images/{{charity.photo}}"></div></div>
-		            	<div class="">
-							<div class="button left">
-								<a class="btn btn-success" href="#" role="button">Support</a>
-							</div>
-							<div class="button right">
-								<a class="btn btn-danger" href="#" role="button">Kick to the Curb.</a>
-							</div>
-						</div>
+		            	<!-- <div class="">{{charity.name}}</div> -->
+		            	<div class=""><img class="img-responsive" ng-src="images/{{charity.photo}}"></div>
+
+									<span class="button-wrap">
+										<a class="btn btn-success left" href="#" role="button">Support</a>
+										<a class="btn btn-danger right" href="#" role="button">Kick to the Curb.</a>
+									</span>
+
 		            </div>
-		        </div>
+		    </div>
 			</cardflow>
 		</div>
 	</div>
