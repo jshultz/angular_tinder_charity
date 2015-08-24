@@ -9,3 +9,4 @@ UPDATE: Back on the wagon with this project after taking some time to work on ot
 TODO:
  * Work on charity pages.
  * Get some cool payment stuff
+ * think I may have to write my own tinder style interface
