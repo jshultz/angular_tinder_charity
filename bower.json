@@ -16,8 +16,7 @@
     "angularfire": "~1.1.1",
     "firebase": "~2.2.7",
     "angular-flash": "~0.1.14",
-    "firebase-util": "~0.2.4",
-    "angular-cardflow": "~0.3.2"
+    "firebase-util": "~0.2.4"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",

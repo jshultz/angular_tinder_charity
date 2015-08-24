@@ -15,6 +15,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h2>This is the Charity Profile view.</h2>
+				<p>Images should fit well within 398px x 265px</p>
 				<form name="myForm" id="myForm" enctype="multipart/form-data" ng-submit="uploadLogo(logoFile)">
 		            <input type="file" name="logo" id="logo" file-model="logoFile">
 		            <button id="addLogo" type="submit">Add Image for Your Charity</button>
@@ -48,7 +49,7 @@
 		</div>
 		</div>
 		<div class="col-md-4">
-			<img ng-if="charityPhoto" class="img-responsive" ng-src="images/{{charityPhoto}}">
+			<img width="398" height="265" ng-if="charityPhoto" class="img-responsive" ng-src="images/{{charityPhoto}}">
 		</div>
 	</div>
 </div>
