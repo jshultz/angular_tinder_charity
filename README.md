@@ -10,4 +10,4 @@ TODO:
  * Work on charity pages.
  * Get some cool payment stuff
  * think I may have to write my own tinder style interface
- * removed cardflow. just not working out.
+ * need to figure out a way to make the card slide effect work
