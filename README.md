@@ -9,5 +9,4 @@ UPDATE: Considering ditching this and focusing on building it in iOS9/Swift 2 in
 TODO:
  * Work on charity pages.
  * Get some cool payment stuff
- * think I may have to write my own tinder style interface
  * need to figure out a way to make the card slide effect work
