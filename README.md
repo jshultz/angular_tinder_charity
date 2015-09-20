@@ -10,3 +10,4 @@ TODO:
  * Work on charity pages.
  * Get some cool payment stuff
  * need to figure out a way to make the card slide effect work
+ * need to finish this.
