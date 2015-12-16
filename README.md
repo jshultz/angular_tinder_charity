@@ -6,6 +6,7 @@ Full Stack Angular project including Node, Grunt, Bower and Yeoman using Stormpa
 
 UPDATE: Considering ditching this and focusing on building it in iOS9/Swift 2 instead.
 
+UPDATE2: haven't work on this in quite a while. published two apps in the Apple App Store instead.
 TODO:
  * Work on charity pages.
  * Get some cool payment stuff
